@@ -2,12 +2,12 @@
 """
 k4_1_salad_reference.py — Ενότητα 4.1.2: το SALAD στο σενάριο αναφοράς των δημιουργών του.
 
-Αναπαράγει τον Πίνακα 2 και το Σχήμα 18.
+Αναπαράγει τον Πίνακα 3 και το Σχήμα 18.
 
 Είναι το notebook "Meet SALAD" του αποθετηρίου https://github.com/NVlabs/salad
 (notebooks/meet_salad.ipynb, commit 2746947), σε μορφή script, χωρίς αλλαγές στις
 παραμέτρους ή στη σειρά των υπολογισμών. Προστέθηκαν μόνο ο υπολογισμός των μέσων
-τιμών του Πίνακα 2, σχόλια στα ελληνικά και η αποθήκευση του σχήματος. Όπως ο κώδικας
+τιμών του Πίνακα 3, σχόλια στα ελληνικά και η αποθήκευση του σχήματος. Όπως ο κώδικας
 του SALAD, διατίθεται με την άδεια της NVIDIA (LICENSE-NVIDIA.txt), που επιτρέπει
 χρήση μόνο για έρευνα ή αξιολόγηση.
 
@@ -20,7 +20,7 @@ k4_1_salad_reference.py — Ενότητα 4.1.2: το SALAD στο σενάρι
   - Το «ιδανικό» είναι ο ILLA με γνώση του πραγματικού SINR (oracle).
 
 Δεν χρειάζεται Sionna ούτε GPU. Τρέχει σε λίγα δευτερόλεπτα.
-Έξοδος: ο Πίνακας 2 στην οθόνη και figures/fig18_salad_reference.png.
+Έξοδος: ο Πίνακας 3 στην οθόνη και figures/fig18_salad_reference.png.
 """
 import os
 import sys
@@ -100,13 +100,13 @@ illa = ILLA(bler_target=bler_target, bler_sigmoid_params=bler_sigmoid_params)
 mcs_oracle = illa(sinr_true)
 se_oracle = mcs_to_se[mcs_oracle] * (1 - bler_target)
 
-# --- Πίνακας 2 ---
+# --- Πίνακας 3 ---
 ideal = float(np.mean(se_oracle))
 rows = [('Ιδανικό (γνώση του πραγματικού SINR)', ideal, None)]
 for lab, name in [('SALAD', 'SALAD'), ('OLLA_delta_1', 'OLLA, βήμα 1 dB'),
                   ('OLLA_delta_0.5', 'OLLA, βήμα 0.5 dB'), ('OLLA_delta_3', 'OLLA, βήμα 3 dB')]:
     rows.append((name, float(np.mean(rate_hist[lab])), 100 * float(np.mean(is_nack_hist[lab]))))
-print('Πίνακας 2: φασματική απόδοση [bits/s/Hz], BLER και απόσταση από το ιδανικό')
+print('Πίνακας 3: φασματική απόδοση [bits/s/Hz], BLER και απόσταση από το ιδανικό')
 for name, se, bl in rows:
     gap = '' if bl is None else f'{100 * (se / ideal - 1):+.1f}%'
     print(f'  {name:38s} {se:.3f}  {"-" if bl is None else f"{bl:.1f}%":>6s}  {gap}')

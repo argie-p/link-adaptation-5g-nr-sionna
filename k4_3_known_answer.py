@@ -2,7 +2,7 @@
 """
 k4_3_known_answer.py — Ενότητες 4.3.1 και 4.3.2: έλεγχος «γνωστής απάντησης».
 
-Αναπαράγει τον Πίνακα 8 και τα Σχήματα 25 και 26 (στην προηγούμενη αρίθμηση 29 και 30).
+Αναπαράγει τον Πίνακα 9 και τα Σχήματα 25 και 26.
 
 Το πείραμα μεταφέρει το τεχνητό προφίλ SINR του σεναρίου των δημιουργών του SALAD
 (Ενότητα 4.1.2: 10 dB, άλμα στα 25 dB και επιστροφή στα 10 dB) μέσα στον βρόχο
@@ -21,7 +21,7 @@ k4_3_known_answer.py — Ενότητες 4.3.1 και 4.3.2: έλεγχος «�
      αναφορά, οπότε τα αποτελέσματά του δεν αλλάζουν.
 
 Χρόνος: περίπου 10 λεπτά σε GPU T4.
-Έξοδος: results/known_answer.csv, ο Πίνακας 8 στην οθόνη και, στον φάκελο figures/,
+Έξοδος: results/known_answer.csv, ο Πίνακας 9 στην οθόνη και, στον φάκελο figures/,
 τα fig25_known_answer.png και fig26_known_answer_frozen.png.
 """
 import os
@@ -126,7 +126,7 @@ FIG_DIR = os.environ.get('FIG_DIR', 'figures')
 os.makedirs(FIG_DIR, exist_ok=True)
 df.to_csv(os.path.join(RESULTS_DIR, 'known_answer.csv'), index=False)
 
-# --- Πίνακας 8: μέσοι όροι πέντε σπόρων και διαφορά του SALAD ανά σπόρο (95% CI, κατανομή t) ---
+# --- Πίνακας 9: μέσοι όροι πέντε σπόρων και διαφορά του SALAD ανά σπόρο (95% CI, κατανομή t) ---
 def paired(a, b):
     d = (df[df.algorithm == a].set_index('seed').SE - df[df.algorithm == b].set_index('seed').SE)
     d = d.loc[SEEDS].values
@@ -138,7 +138,7 @@ def paired(a, b):
 
 print(df.groupby('algorithm', sort=False).agg(SE=('SE', 'mean'), SE_std=('SE', 'std'),
                                               BLER=('BLER', 'mean')).round(3).to_string())
-print('\nΠίνακας 8: διαφορά του SALAD από κάθε εκδοχή του OLLA')
+print('\nΠίνακας 9: διαφορά του SALAD από κάθε εκδοχή του OLLA')
 for d in ('0.5', '1', '3'):
     print(f'  OLLA {d} dB: επίκαιρη αναφορά {paired("SALAD", f"OLLA {d} dB")}, '
           f'παγωμένη αναφορά {paired("SALAD", f"OLLA {d} dB, frozen report")}')
