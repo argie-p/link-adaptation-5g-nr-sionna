@@ -277,7 +277,8 @@ fig, axs = plot(sinr_eff_db_hist, se_illa_noisy, se_shannon, harq_illa_noisy, no
                 label='ILLA')
 fig, axs = plot(sinr_eff_db_hist, se_olla, se_shannon, harq_olla, noise_feedback=noise_feedback, fig=fig,
                 label='OLLA', linestyle='-.')
-fig.suptitle('Imperfect CQI feedback', fontsize=16, y=1)
+fig.suptitle('Imperfect CQI feedback', fontsize=16, y=1)   # τίτλος του tutorial: η αναφορά εδώ είναι SINR
+                                                           # με γκαουσιανό σφάλμα, όχι κβαντισμένο CQI
 fig.tight_layout()
 save(fig, 'fig06_illa_olla.png')
 print('Τα σχήματα είναι στον φάκελο', FIG_DIR)

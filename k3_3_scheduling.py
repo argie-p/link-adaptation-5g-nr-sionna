@@ -12,6 +12,9 @@ slots. Η εφικτή φασματική απόδοση κάθε χρήστη �
 συντελεστής μνήμης beta = 0.95) αναθέτει κάθε resource element σε έναν χρήστη. Για
 σύγκριση, οι πόροι ανατίθενται και τυχαία, ομοιόμορφα.
 
+Στο Σχήμα 7 ο οριζόντιος άξονας μετρά σύμβολα OFDM, δύο σε κάθε slot (400 συνολικά).
+Η ετικέτα «Slot» είναι αυτή του tutorial και του σχήματος της εργασίας.
+
 Προέλευση: tutorial του Sionna (Copyright (c) 2021-2026 NVIDIA CORPORATION & AFFILIATES,
 άδεια Apache 2.0). Αλλαγές: μορφή script, σχόλια στα ελληνικά, αποθήκευση των σχημάτων
 και εκτύπωση των αριθμών της εργασίας.
@@ -111,7 +114,7 @@ pf_metric_pf = np.sum(np.log(rate_achieved_pf))          # μετρική PF: ά
 sc = 2
 colors = plt.cm.Set1(np.linspace(0, 1, num_ut))
 fig, ax = plt.subplots(figsize=(10, 5))
-ax.set_xlabel('Slot')
+ax.set_xlabel('Slot')   # ετικέτα του tutorial: ο άξονας μετρά σύμβολα OFDM, δύο ανά slot
 ax.set_ylabel('Spectral efficiency [bps/Hz]')
 ax.set_title(f'Scheduling decisions on subcarrier {sc}')
 for ut in range(num_ut):

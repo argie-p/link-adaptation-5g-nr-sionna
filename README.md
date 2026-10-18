@@ -29,6 +29,7 @@
 
 ```
 git clone https://github.com/argie-p/link-adaptation-5g-nr-sionna.git
+cd link-adaptation-5g-nr-sionna
 ```
 
 Χρειάζεται Python 3.10 ή νεότερη. Τα δύο κεφάλαια θέλουν διαφορετική έκδοση του Sionna, οπότε καλύτερα σε χωριστά περιβάλλοντα.
